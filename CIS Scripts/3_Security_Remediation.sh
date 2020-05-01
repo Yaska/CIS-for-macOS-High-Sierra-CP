@@ -103,6 +103,8 @@ Audit1_5="$(defaults read "$plistlocation" OrgScore1_5)"
 # If client fails, then remediate
 if [ "$Audit1_5" = "1" ]; then
 	defaults write /Library/Preferences/com.apple.commerce AutoUpdateRestartRequired -bool true
+
+	# This corresponds to 1.6 in 10.15 benchmark and is required to work with Catalina
 	defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticallyInstallMacOSUpdates -bool true
 
 	echo "$(date -u)" "1.5 remediated" | tee -a "$logFile"
